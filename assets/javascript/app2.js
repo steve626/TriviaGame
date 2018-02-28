@@ -1,79 +1,147 @@
 // warbler quiz
 
 //globals
-var question = document.getElementById('photo');
+var currentQuestion;
+var correctAnswer;
+var incorrectAnswer;
+var unanswered;
+var seconds;
+var time;
+var answered;
+var userSelect;
 
+//messages to display
+var messages = {
+    correct: "you got it!",
+    incorrect: "sorry, but that's not it",
+    endTime: "Time's Up!",
+    finished: "Let's see how well you know your birds."
+}
 
+//start button to start game and timer
+$('#startBtn').on('click', function(){
+    $(this).hide();
+    newGame();
+});
 
+//button to start over
+$('#startOverButton').on('click', function(){
+    $(this).hide();
+    newGame();
+});
 
-//make functions for gameplay
+//game function
+function newGame(){
+    $('#finalMessage').empty();
+    $('#correctAnswers').empty();
+    $('#incorrectAnswers').empty();
+    $('#unanswered').empty();
+    currentQuestion = 0;
+    currectAnswer = 0;
+    incorrectAnswer = 0;
+    unsanswered = 0;
+    newQuestion()
+}
 
-function buildQuiz(){
-    //place to store html output
-    var output = [];
-    
-    //for each question:
-    myQuestions.forEach((currentQuestion, questionNumber) =>{const answers = [];
+function newQuestion(){
+    $('#message').empty();
+    $('#correctedAnswer').empty();
+    $('#image').empty();
+    answered = true;
 
-        //for available answers
-        for(letter in currentQuestion.answers){
-
-            //add buttons for answers
-            answers.push(
-                `<label>
-                <input type="button" class="btn btn-success" name="questions${questionNumber}" value="${letter}">
-                ${letter} :
-                ${currentQuestion.answers[letter]}
-                </label>`
-            );
+        //sets up question and answer list
+        $('#currentQuestion').html('Question no.'+(currentQuestion+1)+' of '+myQuestions.length);
+        $('.question').html('<img src="' + myQuestions[currentQuestion].question + '">');
+        console.log("image?")
+        for ( var i = 0; i < 4; i++){
+            var choices =$('<div>');
+            choices.text(myQuestions[currentQuestion].possAnswers[i]);
+            choices.attr({'data-index': i});
+            choices.addClass('thisChoice');
+            $('.answerList').append(choices);
         }
-        //add questions and answers to output
-        output.push(
-            `<div class="photo"> ${currentQuestion.question}</div>
-            <div class="answers"> ${answers.join('')}</div>`
-            );
+            countdown();
+            //pauses time and sets up answer page
+            $('.thisChoice').on('click', function() {
+                userSelect = $(this).data('index');
+                clearInterval(time);
+                answerPage();
+            
+        });
+}
+
+function countdown(){
+    seconds = 20;
+    $('#timeLeft').html('<h3>Time Remaining: ' + seconds + '</h3>');
+    answered = true;
+    time = setInterval(showCountdown,1000);
+}
+
+function showCountdown(){
+    seconds--;
+    $('#timeLeft').html('<h3>Time Remaining: ' + seconds + '</h3>');
+        if(seconds < 1){
+            clearInterval(time);
+            answered = false;
+            answerPage();
+    }
+
+}
+
+function answerPage(){
+    $('#currentQuestion').empty();
+    $('.thisChoice').empty();
+    $('.question').empty();
+
+        var rightAnswerText = myQuestions[currentQuestion].possAnswers[myQuestions[currentQuestion].correctAnswer];
+        var rightAnswerIndex = myQuestions[currentQuestion].answer;
+        //should show a smaller version of the photo,  may have to change
+        $('#image').html('<img src = "' + myQuestions[currentQuestion].question + '" width ="350px"></div>');
+       
+        //checks answer
+        if ((userSelect == rightAnswerIndex) && (answered == true)){
+            correctAnswer++;
+            $('#message').html(messages.correct);
+        } else if ((userSelect!== rightAnswerIndex) && (answered=true)){
+            incorrectAnswer++;
+            $('#message').html(messages.incorrect);
+            $('#correctedAnswer').html('The right answer was: ' + rightAnswerText);
+        } else {
+            unanswered++;
+            $('#message').html(messages.endTime);
+            $('#correctedAnswer').html('The right answer was: ' + rightAnswerText);
+            answered = true;
         }
-    );
 
-    //combine output lists into html for display
-        quizContainer.innerHTML = output.join('');
-
+        if(currentQuestion == (myQuestions.length-1)){
+            setTimeout(endGame, 5000)
+        } else {
+            currentQuestion++;
+            setTimeout(newQuestion, 5000);
         }
         
-
-function showResults(){
-    //collects anwers
-    var containers = quizContainer.querySelectorAll('.answers');
-
-    //track user's answers
-    let numCorrect = 0;
-
-    myQuestions.forEach((currentQuestion, questionNumber)=>{
-
-        //find selected answer
-       const container = containers[questionNumber];
-       const selector = "input[name=question'+questionNumber+']:checked";
-       const userAnswer = (container.querySelector(selector) ||{}).value;
-
-        //if answer is correct
-        if(userAnswer === currentQuestion.correctAnswer){
-    
-            numCorrect++;
-
-            containers[questionNumber].style.color = "green";
-        } else{
-            containers[questionNumber].style.color = "red";
-        }
-        });
-
-        resultsConatiner.innerHTML = numCorrect + ' out of ' + myQuestions.length;
     }
+    
+    function endGame(){
+        $('#timeLeft').empty();
+        $('#message').empty();
+        $('#correctedAnswer').empty();
+        $('#image').empty();
+        $('#finalMessage').html(messages.finished)
+        $('#correctAnswers').html("Correct Answers: " + correctAnswer);
+        $('#incorrectAnswers').html("Incorrect Answers: " + incorrectAnswer);
+        $('#unanswered').html("Unanswered: " + unanswered);
+        $('#startOverButton').addClass('btn btn-warning');
+        $('#startOverButton').show();
+        $('#startOverButton').html('Try Again?');
+        
+    };
 
         //add jquery to change #progress-bar.attr aria with progress from question arrayls
 
 const myQuestions = [
     {
-        question: url("../assets/images/aPine.jpg"),
+        question: "./assets/images/aPine.jpg",
         possAnswers: [
              "Yellow-Throated Warbler",
              "Palm Warbler",
@@ -85,7 +153,7 @@ const myQuestions = [
     },
     
     {
-        question: url("../assets/images/bGrace.jpg"),
+        question: "./assets/images/bGrac.jpg",
         possAnswers: [
              "MacGillivray's Warbler",
              "Grace's Wabler",
@@ -97,7 +165,7 @@ const myQuestions = [
     },   
 
     {
-        question: url("../assets/images/cVirg.jpg"),
+        question: "./assets/images/cVirg.jpg",
         possAnswers: [
              "Orange-Crowned Warbler",
              "Lucy's Wabler",
@@ -109,7 +177,7 @@ const myQuestions = [
     },   
 
     {
-        question: url("../assets/images/dPalm.jpg"),
+        question: "./assets/images/dPalm.jpg",
         possAnswers: [
              "Pine Warbler",
              "Palm Warbler",
@@ -121,7 +189,7 @@ const myQuestions = [
     },   
 
     {
-        question: url("../assets/images/Eprai.jpg"),
+        question: "./assets/images/Eprai.jpg",
         possAnswers: [
              "Prairie Warbler",
              "Connecticut Warbler",
@@ -133,7 +201,7 @@ const myQuestions = [
     },   
 
     {
-        question: url("../assets/images/fHerm.jpg"),
+        question: "./assets/images/fHerm.jpg",
         possAnswers: [
              "Townsend's Warbler",
              "Yellow-Rumped Warbler",
@@ -145,7 +213,7 @@ const myQuestions = [
     },   
 
     {
-        question: url("../assets/images/gBtgr.jpg"),
+        question: "./assets/images/gBtgr.jpg",
         possAnswers: [
              "Blue-Throated Gray Warbler",
              "Black-Throated Gray Warbler",
@@ -157,7 +225,7 @@ const myQuestions = [
     },   
 
     {
-        question: url("../assets/images/hTenn.jpg"),
+        question: "./assets/images/hTenn.jpg",
         possAnswers: [
              "Nashville Warbler",
              "Orange-Crowned Warbler",
@@ -169,7 +237,7 @@ const myQuestions = [
     },   
 
     {
-        question: url("../assets/images/iKirt.jpg"),
+        question: "./assets/images/iKirt.jpg",
         possAnswers: [
              "Kirtland's Warbler",
              "Palm Warbler",
@@ -181,7 +249,7 @@ const myQuestions = [
     },   
 
     {
-        question: url("../assets/images/jLucy.jpg"),
+        question: "./assets/images/jLucy.jpg",
         possAnswers: [
              "Orange-Crowned Warbler",
              "Grace's Warbler",
@@ -193,7 +261,7 @@ const myQuestions = [
     },   
 
     {
-        question: url("../assets/images/kYRWA.jpg"),
+        question: "./assets/images/kYRWA.jpg",
         possAnswers: [
              "Townsend's Warbler",
              "Hermit Warbler",
@@ -205,7 +273,7 @@ const myQuestions = [
     },   
 
     {
-        question: url("../assets/images/lChest.jpg"),
+        question: "./assets/images/lChest.jpg",
         possAnswers: [
              "Chestnut-Sided Warbler",
              "Blue-Winged Warbler",
@@ -217,7 +285,7 @@ const myQuestions = [
     },   
 
     {
-        question: url("../assets/images/mYTWA.jpg"),
+        question: "./assets/images/mYTWA.jpg",
         possAnswers: [
              "Yellow-Rumped Warbler",
              "Common Yellowthroat",
@@ -229,7 +297,7 @@ const myQuestions = [
     }, 
     
     {
-        question: url("../assets/images/nOven.jpg"),
+        question: "./assets/images/nOven.jpg",
         possAnswers: [
              "Lousianna Waterthrush",
              "Ovenbird",
@@ -239,8 +307,8 @@ const myQuestions = [
             correctAnswer: 1,
             progress: "100"
     },   
-]
-buildQuiz();
+];
+
 
 
 
