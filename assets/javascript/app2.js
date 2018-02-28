@@ -2,10 +2,6 @@
 
 //globals
 var question = document.getElementById('photo');
-// var a = document.getElementById('ans-A');
-// var b = document.getElementById('ans-B')
-// var c = document.getElementById('ans-C')
-// var d = document.getElementById('ans-D')
 
 
 
@@ -73,12 +69,12 @@ function showResults(){
         resultsConatiner.innerHTML = numCorrect + ' out of ' + myQuestions.length;
     }
 
-        //add jquery to change #progress-bar.attr aria with progress from question array
+        //add jquery to change #progress-bar.attr aria with progress from question arrayls
 
 const myQuestions = [
     {
         question: url("../assets/images/aPine.jpg"),
-        answers: [
+        possAnswers: [
              "Yellow-Throated Warbler",
              "Palm Warbler",
              "Pine Warbler",
@@ -90,7 +86,7 @@ const myQuestions = [
     
     {
         question: url("../assets/images/bGrace.jpg"),
-        answers: [
+        possAnswers: [
              "MacGillivray's Warbler",
              "Grace's Wabler",
              "Mourning Warbler",
@@ -102,7 +98,7 @@ const myQuestions = [
 
     {
         question: url("../assets/images/cVirg.jpg"),
-        answers: [
+        possAnswers: [
              "Orange-Crowned Warbler",
              "Lucy's Wabler",
              "Connecticut Warbler",
@@ -114,7 +110,7 @@ const myQuestions = [
 
     {
         question: url("../assets/images/dPalm.jpg"),
-        answers: [
+        possAnswers: [
              "Pine Warbler",
              "Palm Warbler",
              "Kirtland's Warbler",
@@ -126,7 +122,7 @@ const myQuestions = [
 
     {
         question: url("../assets/images/Eprai.jpg"),
-        answers: [
+        possAnswers: [
              "Prairie Warbler",
              "Connecticut Warbler",
              "Tropical Parula",
@@ -138,7 +134,7 @@ const myQuestions = [
 
     {
         question: url("../assets/images/fHerm.jpg"),
-        answers: [
+        possAnswers: [
              "Townsend's Warbler",
              "Yellow-Rumped Warbler",
              "Hermit Warbler",
@@ -150,7 +146,7 @@ const myQuestions = [
 
     {
         question: url("../assets/images/gBtgr.jpg"),
-        answers: [
+        possAnswers: [
              "Blue-Throated Gray Warbler",
              "Black-Throated Gray Warbler",
              "Black-Throated Green Warbler",
@@ -162,7 +158,7 @@ const myQuestions = [
 
     {
         question: url("../assets/images/hTenn.jpg"),
-        answers: [
+        possAnswers: [
              "Nashville Warbler",
              "Orange-Crowned Warbler",
              "Mourning Warbler",
@@ -174,7 +170,7 @@ const myQuestions = [
 
     {
         question: url("../assets/images/iKirt.jpg"),
-        answers: [
+        possAnswers: [
              "Kirtland's Warbler",
              "Palm Warbler",
              "Townsend's Warbler",
@@ -186,7 +182,7 @@ const myQuestions = [
 
     {
         question: url("../assets/images/jLucy.jpg"),
-        answers: [
+        possAnswers: [
              "Orange-Crowned Warbler",
              "Grace's Warbler",
              "Lucy's Warbler",
@@ -198,7 +194,7 @@ const myQuestions = [
 
     {
         question: url("../assets/images/kYRWA.jpg"),
-        answers: [
+        possAnswers: [
              "Townsend's Warbler",
              "Hermit Warbler",
              "Prairie Warbler",
@@ -210,7 +206,7 @@ const myQuestions = [
 
     {
         question: url("../assets/images/lChest.jpg"),
-        answers: [
+        possAnswers: [
              "Chestnut-Sided Warbler",
              "Blue-Winged Warbler",
              "Tennesee Warbler",
@@ -222,7 +218,7 @@ const myQuestions = [
 
     {
         question: url("../assets/images/mYTWA.jpg"),
-        answers: [
+        possAnswers: [
              "Yellow-Rumped Warbler",
              "Common Yellowthroat",
              "Yellow-Throated Warbler",
@@ -234,7 +230,7 @@ const myQuestions = [
     
     {
         question: url("../assets/images/nOven.jpg"),
-        answers: [
+        possAnswers: [
              "Lousianna Waterthrush",
              "Ovenbird",
              "Prairie Warbler",
