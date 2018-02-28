@@ -17,9 +17,7 @@ function buildQuiz(){
     var output = [];
     
     //for each question:
-    myQuestions.forEach(
-        (currentQuestion, questionNumber) =>{
-        const answers = [];
+    myQuestions.forEach((currentQuestion, questionNumber) =>{const answers = [];
 
         //for available answers
         for(letter in currentQuestion.answers){
@@ -75,174 +73,174 @@ function showResults(){
         resultsConatiner.innerHTML = numCorrect + ' out of ' + myQuestions.length;
     }
 
-
+        //add jquery to change #progress-bar.attr aria with progress from question array
 
 const myQuestions = [
     {
         question: url("../assets/images/aPine.jpg"),
-        answers: {
-                a: "Yellow-Throated Warbler",
-                b: "Palm Warbler",
-                c: "Pine Warbler",
-                d: "Prairie Warbler"
-        }, 
+        answers: [
+             "Yellow-Throated Warbler",
+             "Palm Warbler",
+             "Pine Warbler",
+             "Prairie Warbler"
+        ], 
             correctAnswer: 2,
             progress: "7"
     },
     
     {
         question: url("../assets/images/bGrace.jpg"),
-        answers: {
-            a: "MacGillivray's Warbler",
-            b: "Grace's Wabler",
-            c: "Mourning Warbler",
-            d: "Black-and-White Warbler"
-        },
-            correctAnswer: "b",
+        answers: [
+             "MacGillivray's Warbler",
+             "Grace's Wabler",
+             "Mourning Warbler",
+             "Black-and-White Warbler"
+        ],
+            correctAnswer: 1,
             progress: "14"
     },   
 
     {
         question: url("../assets/images/cVirg.jpg"),
-        answers: {
-            a: "Orange-Crowned Warbler",
-            b: "Lucy's Wabler",
-            c: "Connecticut Warbler",
-            d: "Virginia's Warbler"
-        },
-            correctAnswer: "d",
+        answers: [
+             "Orange-Crowned Warbler",
+             "Lucy's Wabler",
+             "Connecticut Warbler",
+             "Virginia's Warbler"
+        ],
+            correctAnswer: 3,
             progress: "21"
     },   
 
     {
         question: url("../assets/images/dPalm.jpg"),
-        answers: {
-            a: "Pine Warbler",
-            b: "Palm Warbler",
-            c: "Kirtland's Warbler",
-            d: "Swamp Warbler"
-        },
-            correctAnswer: "b",
+        answers: [
+             "Pine Warbler",
+             "Palm Warbler",
+             "Kirtland's Warbler",
+             "Swamp Warbler"
+        ],
+            correctAnswer: 1,
             progress: "28"
     },   
 
     {
         question: url("../assets/images/Eprai.jpg"),
-        answers: {
-            a: "Prairie Warbler",
-            b: "Connecticut Warbler",
-            c: "Tropical Parula",
-            d: "Golden-Winged Warbler"
-        },
-            correctAnswer: "a",
+        answers: [
+             "Prairie Warbler",
+             "Connecticut Warbler",
+             "Tropical Parula",
+             "Golden-Winged Warbler"
+        ],
+            correctAnswer: 0,
             progress: "35"
     },   
 
     {
         question: url("../assets/images/fHerm.jpg"),
-        answers: {
-            a: "Townsend's Warbler",
-            b: "Yellow-Rumped Warbler",
-            c: "Hermit Warbler",
-            d: "Golden-Cheeked Warbler"
-        },
-            correctAnswer: "c",
+        answers: [
+             "Townsend's Warbler",
+             "Yellow-Rumped Warbler",
+             "Hermit Warbler",
+             "Golden-Cheeked Warbler"
+        ],
+            correctAnswer: 2,
             progress: "42"
     },   
 
     {
         question: url("../assets/images/gBtgr.jpg"),
-        answers: {
-            a: "Blue-Throated Gray Warbler",
-            b: "Black-Throated Gray Warbler",
-            c: "Black-Throated Green Warbler",
-            d: "Black-and-White Warbler"
-        },
-            correctAnswer: "b",
+        answers: [
+             "Blue-Throated Gray Warbler",
+             "Black-Throated Gray Warbler",
+             "Black-Throated Green Warbler",
+             "Black-and-White Warbler"
+        ],
+            correctAnswer: 1,
             progress: "50"
     },   
 
     {
         question: url("../assets/images/hTenn.jpg"),
-        answers: {
-            a: "Nashville Warbler",
-            b: "Orange-Crowned Warbler",
-            c: "Mourning Warbler",
-            d: "Tennessee Warbler"
-        },
-            correctAnswer: "d",
+        answers: [
+             "Nashville Warbler",
+             "Orange-Crowned Warbler",
+             "Mourning Warbler",
+             "Tennessee Warbler"
+        ],
+            correctAnswer: 3,
             progress: "56"
     },   
 
     {
         question: url("../assets/images/iKirt.jpg"),
-        answers: {
-            a: "Kirtland's Warbler",
-            b: "Palm Warbler",
-            c: "Townsend's Warbler",
-            d: "Pine Warbler"
-        },
-            correctAnswer: "a",
+        answers: [
+             "Kirtland's Warbler",
+             "Palm Warbler",
+             "Townsend's Warbler",
+             "Pine Warbler"
+        ],
+            correctAnswer: 0,
             progress: "63"
     },   
 
     {
         question: url("../assets/images/jLucy.jpg"),
-        answers: {
-            a: "Orange-Crowned Warbler",
-            b: "Grace's Warbler",
-            c: "Lucy's Warbler",
-            d: "Virginia's Warbler"
-        },
-            correctAnswer: "c",
+        answers: [
+             "Orange-Crowned Warbler",
+             "Grace's Warbler",
+             "Lucy's Warbler",
+             "Virginia's Warbler"
+        ],
+            correctAnswer: 2,
             progress: "70"
     },   
 
     {
         question: url("../assets/images/kYRWA.jpg"),
-        answers: {
-            a: "Townsend's Warbler",
-            b: "Hermit Warbler",
-            c: "Prairie Warbler",
-            d: "Yellow-Rumped Warbler"
-        },
-            correctAnswer: "d",
+        answers: [
+             "Townsend's Warbler",
+             "Hermit Warbler",
+             "Prairie Warbler",
+             "Yellow-Rumped Warbler"
+        ],
+            correctAnswer: 3,
             progress: "77"
     },   
 
     {
         question: url("../assets/images/lChest.jpg"),
-        answers: {
-            a: "Chestnut-Sided Warbler",
-            b: "Blue-Winged Warbler",
-            c: "Tennesee Warbler",
-            d: "Connecticut Warbler"
-        },
-            correctAnswer: "a",
+        answers: [
+             "Chestnut-Sided Warbler",
+             "Blue-Winged Warbler",
+             "Tennesee Warbler",
+             "Connecticut Warbler"
+        ],
+            correctAnswer: 0,
             progress: "84"
     },   
 
     {
         question: url("../assets/images/mYTWA.jpg"),
-        answers: {
-            a: "Yellow-Rumped Warbler",
-            b: "Common Yellowthroat",
-            c: "Yellow-Throated Warbler",
-            d: "Pine Warbler"
-        },
-            correctAnswer: "c",
+        answers: [
+             "Yellow-Rumped Warbler",
+             "Common Yellowthroat",
+             "Yellow-Throated Warbler",
+             "Pine Warbler"
+        ],
+            correctAnswer: 2,
             progress: "93"
     }, 
     
     {
         question: url("../assets/images/nOven.jpg"),
-        answers: {
-            a: "Lousianna Waterthrush",
-            b: "Ovenbird",
-            c: "Prairie Warbler",
-            d: "Bakerbird"
-        },
-            correctAnswer: "b",
+        answers: [
+             "Lousianna Waterthrush",
+             "Ovenbird",
+             "Prairie Warbler",
+             "Bakerbird"
+        ],
+            correctAnswer: 1,
             progress: "100"
     },   
 ]

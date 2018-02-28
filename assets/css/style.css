@@ -1,5 +1,17 @@
-#main {
+body {
     background:url(../images/see-clipart-forest-10.jpg);
     background-repeat: no-repeat;
 }
 
+#header{
+    background-color: rgb(149, 212, 133);
+    font-size:35px;
+    text-align:center;
+    color: black;
+    text-decoration: bold;
+    padding:20px;
+}
+
+#answers {
+    background-color: rgb(149, 212, 133);
+}
