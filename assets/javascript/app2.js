@@ -111,7 +111,7 @@ function answerPage(){
         } else if ((userSelect!== rightAnswerIndex) && (answered=true)){
             incorrectAnswer++;
             $('#message').html(messages.incorrect);
-            $('#correctedAnswer').html('It is a: ' + rightAnswerText);
+            $('#correctedAnswer').html('It is a ' + rightAnswerText);
         } else {
             unanswered++;
             $('#message').html(messages.endTime);
