@@ -13,43 +13,42 @@
 
 </head>
 <body>
- <div class="container" id="main">
-        <div class="row">
-            <div class="col-lg-10" id="header">
+    <div class="container" id="header">                    
                     <h1>What's that Warbler?</h1>
-            </div>
+    </div>
+       
+        <div class="jumbotron" id="button">
+            <button class="btn btn-success" id="startBtn">Press Start to play</button>
         </div>
-    
-    <div class="container" id="game-area">
 
-        <button class="btn btn-success" id="startBtn">START</button>
-        <div id=timeLeft></div>
-            <div id="photo"></div>
-                <div id="currentQuestion"></div>
-                    <div class="question"></div>
+    <div class="container" id="game-area">        
+        
+                <div id=timeLeft></div>
+                    <div id="currentQuestion"></div>
+                        <div id="question"></div>
+                        
                                  
-                <div class="row">
-                    <div class="col-lg-8"> 
-                            <div class="answerList"></div>   
-                    </div>
+                <div class="container" id="answerBox">                     
+                            <div class="text" id="answerList"></div>   
+                   
                 </div>  
-                            
-                <div id="message"></div>
-                    <div id="correctedAnswer"></div>
-                        <div id="image"></div>
+                <div id="image"></div>          
+                    <div class="text" id="message"></div>
+                        <div class="text" id="correctedAnswer"></div>
+                        
 
-                <div id="finalMessage"></div>
-                    <div id="correctAnswers"></div>
-                        <div id="incorrectAnswers"></div>
-                            <div id="unanswered"></div>
+                <div class="text" id="finalMessage"></div>
+                    <div class="text"id="correctAnswers"></div>
+                        <div class="text" id="incorrectAnswers"></div>
+                            <div class="text" id="unanswered"></div>
                                 <div id="startOverButton"></div>
     </div>            
         
 </div>
 
-    <div class="progress" style="height: 5px;">
-            <div id="progress-bar" class="progress-bar bg-success" role="progressbar" style="width: 25%;" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
+    <!-- <div class="progress" style= "position:absolute; bottom:1px; width: 100%; height: 5px;">
+            <div id="progressBar" class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    </div> -->
 
 </div>
 

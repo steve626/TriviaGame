@@ -1,18 +1,71 @@
 body {
-    background:url(../images/see-clipart-forest-10.jpg);
-    background-repeat: no-repeat;
-}
+    background-color: darkgreen;
+    text-align: center;
+    }
 
 #header{
     background-color: rgb(149, 212, 133);
-    font-size:35px;
+    font-size:40px;
     text-align:center;
     color: black;
     text-decoration: bold;
     padding:20px;
-}
+  }
+
 
 #game-area {
     background-color: rgb(149, 212, 133);
+    
 }
 
+.text {
+    font-size: 30px;
+    color: darkgreen;
+}
+h1 {
+    text-align: center;
+}
+
+h3 {
+    color: yellow;
+    font-size:15px;
+}
+
+.jumbotron {
+    margin:20px;
+    background-color: limegreen;
+    text-align: center;
+    margin-left:20%;
+    margin-right:20%;
+    margin-top:20px;
+    margin-bottom:20px
+}
+
+#answerBox {
+    text-align: center;   
+}
+.thisChoice {
+    text-align: center;
+    text-decoration: bold;
+}
+#timeLeft {
+    padding-top:15px;
+    font-size:1.5rem;
+}
+#image {
+    padding:25px;
+    margin:20px;  
+
+}
+
+#question {
+    padding: 25px;
+ 
+}
+#startOverButton {
+    padding: 25px;
+}
+
+#startBtn {
+font-size: 40px;
+}

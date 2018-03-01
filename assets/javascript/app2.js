@@ -2,7 +2,7 @@
 
 //globals
 var currentQuestion;
-var correctAnswer;
+var rightAnswer;
 var incorrectAnswer;
 var unanswered;
 var seconds;
@@ -13,7 +13,7 @@ var userSelect;
 //messages to display
 var messages = {
     correct: "you got it!",
-    incorrect: "sorry, but that's not it",
+    incorrect: "sorry, but that wasn't it",
     endTime: "Time's Up!",
     finished: "Let's see how well you know your birds."
 }
@@ -21,6 +21,8 @@ var messages = {
 //start button to start game and timer
 $('#startBtn').on('click', function(){
     $(this).hide();
+    $('#header').hide();
+    $('.jumbotron').hide();
     newGame();
 });
 
@@ -37,9 +39,9 @@ function newGame(){
     $('#incorrectAnswers').empty();
     $('#unanswered').empty();
     currentQuestion = 0;
-    currectAnswer = 0;
+    rightAnswer = 0;
     incorrectAnswer = 0;
-    unsanswered = 0;
+    unanswered = 0;
     newQuestion()
 }
 
@@ -50,15 +52,16 @@ function newQuestion(){
     answered = true;
 
         //sets up question and answer list
-        $('#currentQuestion').html('Question no.'+(currentQuestion+1)+' of '+myQuestions.length);
-        $('.question').html('<img src="' + myQuestions[currentQuestion].question + '">');
-        console.log("image?")
+        
+        $('#question').html('<img src="' + myQuestions[currentQuestion].question + '" width:"400px" >');
+        $('#currentQuestion').html('Question '+(currentQuestion+1)+' of '+myQuestions.length);
+      
         for ( var i = 0; i < 4; i++){
             var choices =$('<div>');
             choices.text(myQuestions[currentQuestion].possAnswers[i]);
             choices.attr({'data-index': i});
             choices.addClass('thisChoice');
-            $('.answerList').append(choices);
+            $('#answerList').append(choices);
         }
             countdown();
             //pauses time and sets up answer page
@@ -91,33 +94,36 @@ function showCountdown(){
 function answerPage(){
     $('#currentQuestion').empty();
     $('.thisChoice').empty();
-    $('.question').empty();
+    $('#question').empty();
 
         var rightAnswerText = myQuestions[currentQuestion].possAnswers[myQuestions[currentQuestion].correctAnswer];
-        var rightAnswerIndex = myQuestions[currentQuestion].answer;
+        var rightAnswerIndex = myQuestions[currentQuestion].correctAnswer;
         //should show a smaller version of the photo,  may have to change
         $('#image').html('<img src = "' + myQuestions[currentQuestion].question + '" width ="350px"></div>');
-       
+        $('#progressBar').attr("width", + myQuestions[currentQuestion].progress +'%');
+
         //checks answer
         if ((userSelect == rightAnswerIndex) && (answered == true)){
-            correctAnswer++;
+            rightAnswer++;
             $('#message').html(messages.correct);
+            $('#correctedAnswer').html(+ rightAnswerText);
+            
         } else if ((userSelect!== rightAnswerIndex) && (answered=true)){
             incorrectAnswer++;
             $('#message').html(messages.incorrect);
-            $('#correctedAnswer').html('The right answer was: ' + rightAnswerText);
+            $('#correctedAnswer').html('It is a: ' + rightAnswerText);
         } else {
             unanswered++;
             $('#message').html(messages.endTime);
-            $('#correctedAnswer').html('The right answer was: ' + rightAnswerText);
+            $('#correctedAnswer').html('It is a ' + rightAnswerText);
             answered = true;
         }
 
         if(currentQuestion == (myQuestions.length-1)){
-            setTimeout(endGame, 5000)
+            setTimeout(endGame, 4000)
         } else {
             currentQuestion++;
-            setTimeout(newQuestion, 5000);
+            setTimeout(newQuestion, 4000);
         }
         
     }
@@ -128,7 +134,7 @@ function answerPage(){
         $('#correctedAnswer').empty();
         $('#image').empty();
         $('#finalMessage').html(messages.finished)
-        $('#correctAnswers').html("Correct Answers: " + correctAnswer);
+        $('#correctAnswers').html("Correct Answers: " + rightAnswer);
         $('#incorrectAnswers').html("Incorrect Answers: " + incorrectAnswer);
         $('#unanswered').html("Unanswered: " + unanswered);
         $('#startOverButton').addClass('btn btn-warning');
