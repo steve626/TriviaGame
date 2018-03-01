@@ -12,8 +12,8 @@ var userSelect;
 
 //messages to display
 var messages = {
-    correct: "you got it!",
-    incorrect: "sorry, but that wasn't it",
+    correct: "You got it!",
+    incorrect: "Sorry, but that wasn't it,",
     endTime: "Time's Up!",
     finished: "Let's see how well you know your birds."
 }
@@ -136,7 +136,7 @@ function answerPage(){
         $('#finalMessage').html(messages.finished)
         $('#correctAnswers').html("Correct Answers: " + rightAnswer);
         $('#incorrectAnswers').html("Incorrect Answers: " + incorrectAnswer);
-        $('#unanswered').html("Unanswered: " + unanswered);
+        $('#unanswered').html("unanswered: " + unanswered);
         $('#startOverButton').addClass('btn btn-warning');
         $('#startOverButton').show();
         $('#startOverButton').html('Try Again?');
