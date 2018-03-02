@@ -1,3 +1,7 @@
+html {
+    box-sizing: border-box;
+  }
+
 body {
     background-color: darkgreen;
     text-align: center;
@@ -5,7 +9,7 @@ body {
 
 #header{
     background-color: rgb(149, 212, 133);
-    font-size:40px;
+    font-size:60px;
     text-align:center;
     color: black;
     text-decoration: bold;
@@ -47,6 +51,9 @@ h3 {
 .thisChoice {
     text-align: center;
     text-decoration: bold;
+    float:left;
+    width:50%;
+    font-size: 40px;
 }
 #timeLeft {
     padding-top:15px;

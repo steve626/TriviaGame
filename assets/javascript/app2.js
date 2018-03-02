@@ -100,7 +100,7 @@ function answerPage(){
         var rightAnswerIndex = myQuestions[currentQuestion].correctAnswer;
         //should show a smaller version of the photo,  may have to change
         $('#image').html('<img src = "' + myQuestions[currentQuestion].question + '" width ="350px"></div>');
-        $('#progressBar').attr("width", + myQuestions[currentQuestion].progress +'%');
+        $('#progressBar').attr("style","width: "+ myQuestions[currentQuestion].progress+"%" );
 
         //checks answer
         if ((userSelect == rightAnswerIndex) && (answered == true)){
