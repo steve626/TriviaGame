@@ -100,6 +100,7 @@ function answerPage(){
         var rightAnswerIndex = myQuestions[currentQuestion].correctAnswer;
         //should show a smaller version of the photo,  may have to change
         $('#image').html('<img src = "' + myQuestions[currentQuestion].question + '" width ="350px"></div>');
+        //fill progress bar with each question answered (fills from myQuestions array)
         $('#progressBar').attr("style","width: "+ myQuestions[currentQuestion].progress+"%" );
 
         //checks answer
@@ -120,10 +121,10 @@ function answerPage(){
         }
 
         if(currentQuestion == (myQuestions.length-1)){
-            setTimeout(endGame, 4000)
+            setTimeout(endGame, 3000)
         } else {
             currentQuestion++;
-            setTimeout(newQuestion, 4000);
+            setTimeout(newQuestion, 3000);
         }
         
     }
@@ -140,7 +141,9 @@ function answerPage(){
         $('#startOverButton').addClass('btn btn-warning');
         $('#startOverButton').show();
         $('#startOverButton').html('Try Again?');
-        
+        $('#startOverButton').click(function(){
+            $('#progressBar').attr("style","width: 0%");
+        });
     };
 
         //add jquery to change #progress-bar.attr aria with progress from question arrayls
